@@ -30,6 +30,7 @@ public class Task implements Runnable {
     public void run() {
         try {
             semaphore.acquire();
+            Statistic.showStatisticIsland();
             animalsLocationEating();
             animalsLocationReproducing();
             plantsGrowing();
@@ -40,7 +41,7 @@ public class Task implements Runnable {
             e.printStackTrace();
         }
         semaphore.release();
-        Statistic.showStatisticIsland();
+
     }
 
     public void animalsLocationEating() {
