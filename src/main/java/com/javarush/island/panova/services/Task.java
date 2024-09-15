@@ -45,7 +45,6 @@ public class Task implements Runnable {
     }
 
     public void animalsLocationEating() {
-    //    System.out.println("Eating animals one Location_" + location.getX() + "_" + location.getY());
         for (Map.Entry<AnimalType, Set<Animal>> entry : location.getAnimals().entrySet()) {
             for (Animal animal : entry.getValue()) {
                 animal.eat(location);
@@ -55,7 +54,6 @@ public class Task implements Runnable {
     }
 
     public void animalsLocationMoving() {
-     //   System.out.println("Moving animals one Location_" + location.getX() + "_" + location.getY());
         Set<Animal> copySet = new HashSet<>();
         for (Map.Entry<AnimalType, Set<Animal>> entry : location.getAnimals().entrySet()) {
             copySet.addAll(entry.getValue());
@@ -66,7 +64,6 @@ public class Task implements Runnable {
     }
 
     public void animalsLocationReproducing() {
-     //   System.out.println("Reproducing animals one Location_" + location.getX() + "_" + location.getY());
         for (Map.Entry<AnimalType, Set<Animal>> entry : location.getAnimals().entrySet()) {
             for (Animal animal : entry.getValue()) {
                 animal.reproduce(location);
@@ -76,7 +73,6 @@ public class Task implements Runnable {
     }
 
     public void plantsGrowing() {
-     //   System.out.println("Growing plants one Location_" + location.getX() + "_" + location.getY());
         int countForAdd =  Randomizer.createRandomNumber(
                 LocationData.MAX_NUMBER_PLANT_ONE_SPECIES.get(PlantType.PLANT));
         for (int i = 0; i < countForAdd; i++) {
