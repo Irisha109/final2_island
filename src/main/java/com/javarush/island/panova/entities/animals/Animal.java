@@ -20,7 +20,7 @@ import java.util.*;
 
 @Getter
 public abstract class Animal {
-    public static final double EXPENSE_ENERGY_PERCENT = 20;
+    public static final double EXPENSE_ENERGY_PERCENT = 30;
     public final double expenseEnergyForStep;
     private final AnimalType animalType;
     private final double weight;
@@ -54,7 +54,9 @@ public abstract class Animal {
                 && Helper.checkMaxNumberAnimalOneSpecies(nextLocation, this.getAnimalType())) {
             nextLocation.getAnimals().get(this.getAnimalType()).add(this);
             currentLocation.getAnimals().get(this.getAnimalType()).remove(this);
-            healthPoint = healthPoint - expenseEnergyForStep;
+            healthPoint -= expenseEnergyForStep;
+        } else {
+            currentLocation.getAnimals().get(this.getAnimalType()).remove(this);
         }
 
     }
@@ -98,11 +100,11 @@ public abstract class Animal {
         }
         Set<Food> foods = Helper.getSetFoods(location, this);
         if (foods.isEmpty()) {
-            return;
+           return;
         }
         double newHealthPoint = getHealthPoint();
         Iterator<Food> iterator = foods.iterator();
-        while (newHealthPoint <= getFoodNeeds() && iterator.hasNext()) {
+        while (newHealthPoint < getFoodNeeds() && iterator.hasNext()) {
             Food food = iterator.next();
             if (foodMap.get(food.getType()) >= Randomizer.createRandomNumber(100)) {
                 newHealthPoint += food.getWeight();

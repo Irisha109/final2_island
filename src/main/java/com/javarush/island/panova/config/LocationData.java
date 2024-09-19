@@ -26,8 +26,8 @@ public class LocationData {
     private static final Integer MAX_NUMBER_OF_CATERPILLAR = 1000;
     private static final Integer MAX_NUMBER_OF_PLANT = 200;
 
-    public static final Integer WIDTH_OF_LOCATIONS = 2;
-    public static final Integer HEIGHT_OF_LOCATIONS = 2;
+    public static final Integer WIDTH_OF_LOCATIONS = 5;
+    public static final Integer HEIGHT_OF_LOCATIONS = 3;
 
     public static final Map<AnimalType, Integer> MAX_NUMBER_ANIMAL_ONE_SPECIES = new HashMap<>();
     public static final Map<PlantType, Integer> MAX_NUMBER_PLANT_ONE_SPECIES = new HashMap<>();
