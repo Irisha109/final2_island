@@ -48,7 +48,7 @@ public class App {
                 queue.add(new Task(value, SEMAPHORE));
             }
         }
-        queue.add(new View(ISLAND));
+        queue.add(new View());
     }
 
 
