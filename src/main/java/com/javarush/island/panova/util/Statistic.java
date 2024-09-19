@@ -17,22 +17,22 @@ public class Statistic {
     private Statistic() {
     }
 
-    public static synchronized void showStatisticIsland(Island island) {
+    public static synchronized void showStatisticIsland() {
         Map<Type, Integer> biomeMap = new HashMap<>();
-        Location[][] locations = island.getLocations();
+        Location[][] locations = Island.getLocations();
 
         for (Location[] location : locations) {
-            for (int j = 0; j < location.length; j++) {
-                for (Map.Entry<AnimalType, Set<Animal>> entry : location[j].getAnimals().entrySet()) {
+            for (Location value : location) {
+                for (Map.Entry<AnimalType, Set<Animal>> entry : value.getAnimals().entrySet()) {
                     if (biomeMap.containsKey(entry.getKey())) {
                         int oldValue = biomeMap.get(entry.getKey());
                         int newValue = oldValue + entry.getValue().size();
                         biomeMap.replace(entry.getKey(), oldValue, newValue);
                     } else {
-                        biomeMap.put(entry.getKey(), Helper.countNumberAnimalOneSpecies(location[j], entry.getKey()));
+                        biomeMap.put(entry.getKey(), Helper.countNumberAnimalOneSpecies(value, entry.getKey()));
                     }
                 }
-                biomeMap.put(PlantType.PLANT, location[j].getPlants().size());
+                biomeMap.put(PlantType.PLANT, value.getPlants().size());
             }
 
         }
@@ -61,38 +61,3 @@ public class Statistic {
 }
 
 
-//private static Map<Type, Integer> collectingDataIsland() {
-// Map<Type, Integer> statisticData = collectingDataIsland();
-//    Island island = Island.getIsland();
-//    Map<Type, Integer> biomeMap = new HashMap<>();
-//    Location[][] locations = island.getLocations();
-//
-//    for (Location[] location : locations) {
-//        for (int j = 0; j < location.length; j++) {
-//            for (Map.Entry<AnimalType, Set<Animal>> entry : location[j].getAnimals().entrySet()) {
-//                if (biomeMap.containsKey(entry.getKey())) {
-//                    int oldValue = biomeMap.get(entry.getKey());
-//                    int newValue = oldValue + entry.getValue().size();
-//                    biomeMap.replace(entry.getKey(), oldValue, newValue);
-//                } else {
-//                    biomeMap.put(entry.getKey(), Helper.countNumberAnimalOneSpecies(location[j], entry.getKey()));
-//                }
-//            }
-//            biomeMap.put(PlantType.PLANT, location[j].getPlants().size());
-//        }
-//
-//    }
-//    return biomeMap;
-//}
-
-//private static Map<Type, Integer> collectingDataLocation(Location location) {
-//    // Map<Type, Integer> statisticData = collectingDataLocation(location);
-//    Map<Type, Integer> biomeMap = new HashMap<>();
-//    for (AnimalType animalType : AnimalType.values()) {
-//        Integer count = Helper.countNumberAnimalOneSpecies(location, animalType);
-//        biomeMap.put(animalType, count);
-//    }
-//    biomeMap.put(PlantType.PLANT, location.getPlants().size());
-//
-//    return biomeMap;
-//}

@@ -7,7 +7,6 @@ import com.javarush.island.panova.entities.enums.Direction;
 import com.javarush.island.panova.entities.enums.Gender;
 import com.javarush.island.panova.entities.impl.Food;
 import com.javarush.island.panova.entities.impl.Type;
-import com.javarush.island.panova.entities.plants.Plant;
 import com.javarush.island.panova.entities.territory.Island;
 import com.javarush.island.panova.entities.territory.Location;
 import com.javarush.island.panova.util.*;
@@ -116,7 +115,7 @@ public abstract class Animal {
         if (!foodEaten.isEmpty()) {
             for (Food food : foodEaten) {
                 if (location.getAnimals().containsKey(food.getType())) {
-                    location.getAnimals().get(food.getType()).remove(food);
+                    location.getAnimals().get(food.getType()).remove((Animal) food);
                 }
                 if (location.getPlants().contains(food)) {
                     location.getPlants().remove(food);

@@ -2,9 +2,9 @@ package com.javarush.island.panova.util;
 
 import com.javarush.island.panova.config.LocationData;
 import com.javarush.island.panova.entities.animals.Animal;
-import com.javarush.island.panova.entities.impl.Type;
+
 import com.javarush.island.panova.entities.plants.Plant;
-import com.javarush.island.panova.entities.territory.Island;
+
 import com.javarush.island.panova.entities.territory.Location;
 import com.javarush.island.panova.entities.enums.AnimalType;
 import com.javarush.island.panova.entities.impl.Food;
@@ -59,12 +59,6 @@ public class Helper {
         return resultFoods;
     }
 
-//    public static int countMaxNumberPossiblePlant(PlantType plantType) {
-//        return Randomizer.createRandomNumber(
-//                LocationData.MAX_NUMBER_PLANT_ONE_SPECIES.get(PlantType.PLANT));
-//
-//    }
-
     public static boolean checkMaxNumberPlantOfOneSpecies(Location location, PlantType plantType) {
         int currentNumberOfPlants = location.getPlants().size();
         return currentNumberOfPlants < LocationData.MAX_NUMBER_PLANT_ONE_SPECIES.get(plantType);
@@ -72,9 +66,7 @@ public class Helper {
     }
 
     private static void addPlantTypeInFoodMap(Set<Plant> plants, Set<Food> resultFoods) {
-        for (Plant plant : plants) {
-            resultFoods.add(plant);
-        }
+        resultFoods.addAll(plants);
     }
 
 

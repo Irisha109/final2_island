@@ -4,7 +4,7 @@ import com.javarush.island.panova.entities.territory.Island;
 import com.javarush.island.panova.util.Statistic;
 
 public class View implements Runnable{
-    private Island island;
+    private final Island island;
 
     public View(Island island) {
         this.island = island;
@@ -12,6 +12,6 @@ public class View implements Runnable{
 
     @Override
     public void run() {
-        Statistic.showStatisticIsland(island);
+        Statistic.showStatisticIsland();
     }
 }

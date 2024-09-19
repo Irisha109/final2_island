@@ -8,7 +8,7 @@ import com.javarush.island.panova.entities.plants.Plant;
 import com.javarush.island.panova.entities.territory.Location;
 import com.javarush.island.panova.util.Helper;
 import com.javarush.island.panova.util.Randomizer;
-import com.javarush.island.panova.util.Statistic;
+import lombok.SneakyThrows;
 
 import java.util.HashSet;
 import java.util.Map;
@@ -26,6 +26,7 @@ public class Task implements Runnable {
 
     }
 
+    @SneakyThrows
     @Override
     public void run() {
         try {
